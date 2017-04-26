@@ -37,3 +37,5 @@ sheet = smartsheet.models.Sheet({
 action = smartsheet.Folders.create_sheet_in_folder(folderId, sheet)
 sheet = action.result
 
+print(sheet)
+
