@@ -2,7 +2,7 @@ import sys
 
 def main(talkenid, name):
     print('Execute main Process')
-    
+
     import smartsheet
 
     # Set a talken ID to get your Smartsheet API access
@@ -17,7 +17,7 @@ def main(talkenid, name):
     folderId=action.result.id
 
 
-    # Create sheet in specific folder 
+    # Create sheet in specific folder
     sheet = smartsheet.models.Sheet({
         'name': 'ProjectSchedule',
         'columns': [{
@@ -26,7 +26,7 @@ def main(talkenid, name):
                 'symbol': 'STAR'
             }, {
                 'title': 'Primary Column',
-                'primary': True,name
+                'primary': True,
                 'type': 'TEXT_NUMBER'
             }, {
                 'title': 'Status',
@@ -43,21 +43,15 @@ def main(talkenid, name):
     action = smartsheet.Folders.create_sheet_in_folder(folderId, sheet)
     sheet = action.result
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     args = sys.argv
-    
+
     if len(args) == 3:
         talkenid = args[1]
         name     = args[2]
         main(talkenid, name)
     else:
         print('Please specify with following format')
-        print('$ create_folder.py <Talken ID> <Project Name>)
+        print('$ create_folder.py <Talken ID> <Project Name>')
         quit()
-                  
-        
-        
-        
-        
-        
 
